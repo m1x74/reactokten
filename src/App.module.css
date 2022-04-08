@@ -1,7 +1,13 @@
-.usersname{
+.usersname {
     font-size: 30px;
-}
-.but{
     display: flex;
-    column-gap: 20px;
+    column-gap: 400px;
 }
+
+.but {
+    margin-left: 20px;
+    font-size: 15px;
+    background: coral;
+    cursor: pointer;
+}
+

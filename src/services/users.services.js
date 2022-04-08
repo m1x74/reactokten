@@ -3,5 +3,5 @@ import {urls} from "../constants";
 
 
 export const usersService = {
-    getAll:() => axiosService.get(urls.users)
+    getAll: () => axiosService.get(urls.users)
 }
