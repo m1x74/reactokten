@@ -1,0 +1,7 @@
+.usersname{
+    font-size: 30px;
+}
+.but{
+    display: flex;
+    column-gap: 20px;
+}
