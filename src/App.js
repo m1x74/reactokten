@@ -3,7 +3,7 @@ import {CarForm} from "./components/CarForm/CarForm";
 import {useState} from "react";
 
 
-function App() {
+const App=()=> {
 
     const [newCar, setNewCar] = useState(null);
     const [updatedCar, setUpdatedCar] = useState(null)
