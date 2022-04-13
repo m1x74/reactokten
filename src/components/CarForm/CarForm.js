@@ -18,7 +18,7 @@ export const CarForm = ({setNewCar, carForUpdate,setCarForUpdate,setUpdatedCar})
             setValue('year', year);
 
         }
-    }, [carForUpdate])
+    },[carForUpdate])
     const mySubmit = async (car) => {
         try {
             if (carForUpdate){
