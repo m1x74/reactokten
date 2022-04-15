@@ -1,0 +1,19 @@
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 40px;
+    background: black;
+    height: 60px;
+
+}
+.header a{
+    text-decoration: none;
+    color: white;
+}
+.header a:hover{
+    color: red;
+}
+.header a[class='active']{
+color: red;
+}
