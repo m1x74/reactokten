@@ -1,10 +1,15 @@
 import React from 'react';
 
-export const User = ({user,setUser}) => {
+import styles from "./UserWithButModule.css"
+import {Button} from "../Button/button";
+
+export const User = ({user}) => {
+    const {id,name}=user
+
     return (
-        <div>
-            {user.id}. {user.name}
-            <button>ABOUT</button>
+        <div className={'userwithbut'}>
+            <p>{user.id}. {user.name}</p>
+            <Button state={user} to={id.toString()}>SHOW INFO</Button>
         </div>
     );
 };
