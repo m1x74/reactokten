@@ -3,3 +3,4 @@ export * from './User/User';
 export * from './UserInfo/UserInfo';
 export * from './PostInfo/PostInfo';
 export * from './Button/button';
+export * from './Comments/Comments';

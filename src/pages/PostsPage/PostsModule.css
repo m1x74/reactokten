@@ -1,0 +1,17 @@
+.posts{
+    margin-top: 25px;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+
+
+}
+.posts p{
+    border-bottom: black solid 3px;
+    width: 500px;
+}
+.rr{
+    display: flex;
+    column-gap: 100px;
+}
