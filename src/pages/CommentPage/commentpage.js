@@ -5,9 +5,9 @@ import {Comments} from "../../components";
 
 export const Commentpage = () => {
     const [comments,setComments]=useState([]);
-    const {postId}=useParams();
+    const {id}=useParams();
     useEffect(()=>{
-        commentsService.getByPostId(postId).then(({data})=>setComments(data))
+        commentsService.getByPostId(id).then(({data})=>setComments(data))
     })
     return (
         <div>
