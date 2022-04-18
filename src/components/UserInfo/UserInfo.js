@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {Button} from "../Button/button";
+
 export const UserInfo = ({user}) => {
     const {id, name, username, email, phone, address, website} = user
     return (
@@ -18,6 +20,7 @@ export const UserInfo = ({user}) => {
             <hr/>
             <div>Website: {website}</div>
             <hr/>
+            <Button to={'post'}>GET POSTS</Button>
         </div>
     );
 };

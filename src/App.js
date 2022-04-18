@@ -11,7 +11,9 @@ function App() {
                 <Route index element={<Navigate to={'/home'}/>}> </Route>
                 <Route path={'home'} element={<Homepage/>}> </Route>
                 <Route path={'users'} element={<Userspage/>}>>
-                    <Route path={':userId'} element={<Singleuserpage/>}>> </Route>
+                    <Route path={':userId'} element={<Singleuserpage/>}>>
+                        <Route path={':post'} element={<Postspage/>}></Route>
+                    </Route>
                 </Route>
                 <Route path={'posts'} element={<Postspage/>}>> </Route>
                 {/*<Route path={`:UserID`} element={<Singlepostpage/>}>> </Route>*/}

@@ -1,0 +1,11 @@
+.but{
+    width: 200px;
+    background: black;
+    color: snow;
+    border: none;
+    height: 50px;
+}
+.but:hover{
+    cursor: pointer;
+    background: red;
+}
