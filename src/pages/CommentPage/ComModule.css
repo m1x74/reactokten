@@ -1,0 +1,7 @@
+.comments{
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
+    margin-top: 25px;
+    font-size: 20px;
+}

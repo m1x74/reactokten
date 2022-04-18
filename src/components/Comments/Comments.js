@@ -1,7 +1,7 @@
 import React from 'react';
 
-export const Comments = ({comments}) => {
-    const{postId,id,name,email,body}=comments
+export const Comments = ({comment}) => {
+    const{postId,id,name,email,body}=comment
 
     return (
         <div>
