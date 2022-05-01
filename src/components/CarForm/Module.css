@@ -1,0 +1,17 @@
+.flex{
+    display: flex;
+    column-gap: 30px;
+    margin-left: 250px;
+    font-size: 20px;
+}
+.flex button{
+    background: black;
+    color: white;
+    width: 100px;
+    border: none;
+    cursor: pointer;
+}
+.flex button:hover{
+    background: red;
+    color: black;
+}
