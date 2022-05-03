@@ -1,108 +1,107 @@
-import {createAsyncThunk,createSlice} from "@reduxjs/toolkit";
-import {carServices} from "../../services";
+import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import {carService} from "../../services";
 
-const initialState={
+const initialState = {
     cars: [],
-    status:null,
-    formErrors:{},
-    CarForUpdate:null
+    status: null,
+    formErrors: {},
+    carForUpdate: null,
+};
 
-}
-const getAll=createAsyncThunk(
-    'GetAll',
-    async ()=>{
-        const {data}=await carServices.getAll();
+const getAll = createAsyncThunk(
+    'getAllCars',
+    async () => {
+        const {data} = await carService.getAll();
         return data
     }
 );
 
-const deleteById=createAsyncThunk(
+const deleteById = createAsyncThunk(
     'deleteById',
-    async ({id},{dispatch,rejectedWithValue})=>{
+    async ({id}, {dispatch, rejectWithValue}) => {
         try {
-            await carServices.deleteById(id);
-            dispatch(deleteCarById({id}));
+            await carService.deleteById(id);
+            dispatch(deleteCarById({ id }));
         }catch (e) {
-            return rejectedWithValue({status:e.message})
+            return rejectWithValue({status: e.message})
         }
     }
 );
-const updateById=createAsyncThunk(
+
+const updateById = createAsyncThunk(
     'updateById',
-    async ({id,car},{dispatch,rejectedWithValue})=>{
+    async ({id, car}, {dispatch, rejectWithValue}) => {
         try {
-            await carServices.updateById(id,car);
-            dispatch(updateCarbyId({id,car}));
-        }catch (e) {
-            return rejectedWithValue({status:e.message})
+            await carService.updateById(id, car);
+            dispatch(updateCarById({ id, car }));
+        } catch (e) {
+            return rejectWithValue({status: e.message})
         }
     }
 );
-const createAsync=createAsyncThunk(
+
+const createAsync = createAsyncThunk(
     'create',
-    async ({car},{dispatch,rejectedWithValue})=>{
+    async ({car}, {dispatch, rejectWithValue}) => {
         try {
-            const{data}=await carServices.create(car);
+            const {data} = await carService.create(car);
             dispatch(create({car: data}))
-        }catch (e) {
-            rejectedWithValue({status:e.message,formErrors: e.response.data})
+        } catch (e) {
+            return rejectWithValue({status: e.message, formErrors: e.response.data})
         }
     }
 )
-
-
-
-
 const carSlice = createSlice({
-    name:'carSlice',
+    name: 'carSlice',
     initialState,
-    reducers:{
-        create: (state,action)=>{
-            state.cars.push(action.payload.car);
+    reducers: {
+        create: (state, action) => {
+            state.cars.push(action.payload.car)
         },
-        deleteCarById:(state,action)=>{
-            const index=state.cars.findIndex(car=>car.id===action.payload.id);
-            state.cars.splice(index,1)
+        deleteCarById: (state, action) => {
+            const index = state.cars.findIndex(car => car.id === action.payload.id);
+            state.cars.splice(index, 1);
         },
-        updateCarbyId:(state,action)=>{
-            const index=state.cars.findIndex(car=>car.id===action.payload.id);
-            state.cars[index]={...state.cars[index],...action.payload.car};
-            state.CarForUpdate=false;
+        updateCarById: (state, action) => {
+            const index = state.cars.findIndex(car => car.id === action.payload.id);
+            state.cars[index] = { ...state.cars[index], ...action.payload.car };
+            state.carForUpdate = false;
         },
-        setCarForUpdate:(state,action)=>{
-            state.CarForUpdate=action.payload.car;
+        setCarForUpdate: (state, action) => {
+            state.carForUpdate = action.payload.car;
         }
     },
-    extraReducers:(builder)=>{
+    extraReducers: (builder) => {
         builder
-            .addCase(getAll.fulfilled,(state,action)=>{
-                state.status='completed';
-                state.cars=action.payload;
+            .addCase(getAll.fulfilled, (state, action) => {
+                state.status = 'completed'
+                state.cars = action.payload
                 console.log(action.type);
             })
-            .addCase(createAsync.fulfilled,(state, action) => {
+            .addCase(createAsync.fulfilled, (state, action) => {
                 console.log('completed');
                 console.log(action.type);
             })
-            .addCase(createAsync.rejected,(state, action) => {
-                const {status,formErrors}=action.payload;
-                state.status=status;
-                state.formErrors=formErrors;
-                console.log(action.type)
+            .addCase(createAsync.rejected, (state, action) => {
+                const {status, formErrors} = action.payload;
+                state.status = status
+                state.formErrors = formErrors
+                console.log(action.type);
             })
-
     }
 });
-const {reducer: carReducer,actions:{create,deleteCarById,updateCarbyId,setCarForUpdate}}=carSlice;
-const carActions={
+
+const {reducer: carReducer, actions: {create, deleteCarById, updateCarById, setCarForUpdate}} = carSlice;
+
+const carActions = {
     getAll,
+    createAsync,
     deleteById,
     updateById,
-    createAsync,
-    setCarForUpdate
+    setCarForUpdate,
 }
+
 export {
     carReducer,
     carActions
 }
-

@@ -2,7 +2,7 @@ import {axiosServices} from "./axios.services";
 import {urls} from "../constants/urls";
 
 
-const carServices = {
+const carService = {
     getAll: ()=>axiosServices.get(urls.cars),
     create: (car)=>axiosServices.post(urls.cars,car),
     getById: (id)=>axiosServices.get(`${urls.cars}/${id}`),
@@ -12,5 +12,5 @@ const carServices = {
 
 }
 export {
-    carServices
+    carService
 }

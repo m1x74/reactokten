@@ -1,5 +1,5 @@
 import React from 'react';
-import {Cars} from "../components";
+import {Cars} from "../../components";
 
 export const CarsPage = () => {
     return (
